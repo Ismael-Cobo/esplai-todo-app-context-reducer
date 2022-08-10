@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { Row, Col, Container } from 'react-bootstrap'
 import { NewTask, Tasks } from './components'
 import { taskReducer, TaskContext } from './context';
@@ -17,6 +17,11 @@ function App() {
   const [taskState, dispatch] = useReducer(taskReducer, {}, init)
 
   // console.log(taskState)
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(taskState.tasks))
+  }, [taskState])
+
   return (
     <TaskContext.Provider value={{ taskState, dispatch }}>
 

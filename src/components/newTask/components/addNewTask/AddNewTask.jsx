@@ -18,13 +18,14 @@ export const AddNewTask = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     // console.log(taskState)
+    if (task.length <= 0) return
 
     const data = { id: v4(), task }
     const action = { type: types.addNew, payload: data }
 
-    let newTasks = [...taskState.tasks, data]
+    // let newTasks = [...taskState.tasks, data]
 
-    localStorage.setItem('tasks', JSON.stringify(newTasks));
+    // localStorage.setItem('tasks', JSON.stringify(newTasks));
 
     dispatch(action);
 
